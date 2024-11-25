@@ -33,5 +33,9 @@ UserSchema.methods.toProfileJSONFor = function() {
     address: this.address,
   };
 };
+UserSchema.pre('save', async function(next) {
+  console.log('just before saving UserSchema... ');
+  next();
+});
 
 module.exports = User;

@@ -20,6 +20,11 @@ const NyxcipherSchema = new mongoose.Schema({
   winner_drawn_date: Date,
 }, { timestamps: true });
 
+NyxcipherSchema.pre('save', async function(next) {
+  console.log('just before saving NyxcipherSchema... ');
+  next();
+});
+
 const Nyxcipher = mongoose.model('Nyxcipher', NyxcipherSchema);
 
 module.exports = Nyxcipher;

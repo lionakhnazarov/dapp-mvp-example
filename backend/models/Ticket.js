@@ -10,6 +10,11 @@ const TicketSchema = new mongoose.Schema({
   winning_ticket: {type: Boolean, default: false},
 }, { timestamps: true });
 
+TicketSchema.pre('save', async function(next) {
+  console.log('just before saving TicketSchema... ');
+  next();
+});
+
 const Ticket = mongoose.model('Ticket', TicketSchema);
 
 module.exports = Ticket;

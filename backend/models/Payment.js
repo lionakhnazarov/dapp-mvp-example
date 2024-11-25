@@ -12,6 +12,11 @@ const PaymentSchema = new mongoose.Schema({
   payment_processor: {type: String, required: true},
 }, { timestamps: true });
 
+PaymentSchema.pre('save', async function(next) {
+  console.log('just before saving PaymentSchema... ');
+  next();
+});
+
 const Payment = mongoose.model('Payment', PaymentSchema);
 
 module.exports = Payment;

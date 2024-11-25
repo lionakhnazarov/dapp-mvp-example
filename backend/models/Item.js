@@ -13,6 +13,11 @@ const ItemSchema = new mongoose.Schema({
   item_images: String,
 }, { timestamps: true });
 
+ItemSchema.pre('save', async function(next) {
+  console.log('just before saving ItemSchema... ');
+  next();
+});
+
 const Item = mongoose.model('Item', ItemSchema);
 
 module.exports = Item;
